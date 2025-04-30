@@ -1,19 +1,8 @@
-terraform {
+resource "aws_instance" "vm" {  
+  ami           = "ami-0be2609ba883822ec"
+  instance_type = "t2.medium"
 
-  cloud {
-    organization = "organization-name"
-
-    workspaces {
-      name = "learn-terraform"
-    }
+  tags = {
+    Name = "${var.project}-vm"
   }
-
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "~> 5.31.0"
-    }
-  }
-
-  required_version = ">= 1.2"
 }
