@@ -1,0 +1,2 @@
+# terraform-staticsite
+static site
