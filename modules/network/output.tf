@@ -5,7 +5,3 @@ output "vpc_id" {
 output "public_subnets" {
   value = aws_subnet.public[*].id
 }
-
-output "route_table_ids" {
-  value = aws_default_route_table.rtb.id
-}
