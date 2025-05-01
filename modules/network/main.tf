@@ -15,7 +15,7 @@ resource "aws_route_table" "public" {
 }
 
 resource "aws_internet_gateway" "igw" {
-  vpc_id = aws_vpc.vpc.id
+  vpc_id = aws_vpc.this.id
 }
 
 resource "aws_default_route_table" "rtb" {
