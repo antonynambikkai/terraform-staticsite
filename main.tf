@@ -13,23 +13,29 @@ data "template_file" "user_data" {
 }
 
 module "vpc" {
-  source = "./modules/network"
+source = "./modules/network"
+vpc_cidr = var.vpc_cidr
+public_subnet_cidrs = var.public_subnet_cidrs
 }
+
 
 module "s3" {
   source = "./modules/s3"
 }
 
 #module "alb" {
-#  source  = "./modules/alb"
-#  vpc_id  = modules.vpc.vpc_id
-#  subnets = modules.vpc.public_subnets
+
+#source = "./modules/alb"
+#vpc_id = module.vpc.vpc_id
+#subnets = module.vpc.public_subnets
+
 #}
 
  module "s3_vpc_endpoint" {
    source          = "./modules/s3_vpc_endpoint"
-   vpc_id          = module.vpc.vpc_id
-   route_table_ids = tolist(module.vpc.aws_default_route_table.id)
+   vpc_id = module.vpc.vpc_id
+   route_table_ids = module.vpc.route_table_ids
+
    
     } 
 
