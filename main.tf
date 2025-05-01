@@ -1,5 +1,5 @@
 resource "aws_instance" "vm" {  
-  ami           = "ami-0be2609ba883822ec"
+  ami           = "ami-00304a369b0f2a09c"
   instance_type = "t2.medium"
 
   tags = {
