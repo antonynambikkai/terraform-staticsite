@@ -12,7 +12,7 @@ data "template_file" "user_data" {
   template = file("${path.module}/userdata.sh")
 }
 
-module "network" {
+module "vpc" {
   source = "./modules/network"
 }
 
@@ -22,8 +22,8 @@ module "s3" {
 
 module "alb" {
   source  = "./modules/alb"
-  vpc_id  = modules.network.vpc_id
-  subnets = modules.network.public_subnets
+  vpc_id  = modules.vpc.vpc_id
+  subnets = modules.vpc.public_subnets
 }
 
 # module "s3_vpc_endpoint" {
