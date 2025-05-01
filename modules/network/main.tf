@@ -23,6 +23,6 @@ resource "aws_default_route_table" "rtb" {
     cidr_block = "0.0.0.0/0"
     gateway_id = aws_internet_gateway.igw.id
   }
-  default_route_table_id = aws_vpc.vpc.default_route_table_id
+  default_route_table_id = aws_vpc.this.default_route_table_id
 }
 
