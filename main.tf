@@ -16,20 +16,19 @@ module "network" {
   source = "./modules/network"
 }
 
-module "alb" {
-  source  = "./modules/alb"
-  vpc_id  = module.network.vpc_id
-  subnets = module.network.public_subnets
-}
-
 module "s3" {
   source = "./modules/s3"
 }
 
+# module "alb" {
+#   source  = "./modules/alb"
+#   vpc_id  = module.network.vpc_id
+#   subnets = module.network.public_subnets
+# }
 
-module "s3_vpc_endpoint" {
-  source = "./modules/s3_vpc_endpoint"
-  vpc_id = module.network.vpc_id
-  route_table_ids = module.network.route_table_ids
-}
+# module "s3_vpc_endpoint" {
+#   source          = "./modules/s3_vpc_endpoint"
+#   vpc_id          = module.network.vpc_id
+#   route_table_ids = module.network.route_table_ids
+# } 
 
