@@ -20,15 +20,16 @@ module "s3" {
   source = "./modules/s3"
 }
 
-module "alb" {
-  source  = "./modules/alb"
-  vpc_id  = modules.vpc.vpc_id
-  subnets = modules.vpc.public_subnets
-}
+#module "alb" {
+#  source  = "./modules/alb"
+#  vpc_id  = modules.vpc.vpc_id
+#  subnets = modules.vpc.public_subnets
+#}
 
-# module "s3_vpc_endpoint" {
-#   source          = "./modules/s3_vpc_endpoint"
-#   vpc_id          = module.network.vpc_id
-#   route_table_ids = module.network.route_table_ids
-# } 
+ module "s3_vpc_endpoint" {
+   source          = "./modules/s3_vpc_endpoint"
+   vpc_id          = module.vpc.vpc_id
+   route_table_ids = module.vpc.aws_default_route_table.id
+   
+    } 
 
