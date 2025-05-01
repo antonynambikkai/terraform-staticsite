@@ -18,10 +18,10 @@ resource "aws_internet_gateway" "igw" {
   vpc_id = aws_vpc.vpc.id
 }
 
-resource "aws_default_route_table" "rt" {
+resource "aws_default_route_table" "rtb" {
   route {
     cidr_block = "0.0.0.0/0"
-    gateway_id = aws_internet_gateway.ig.id
+    gateway_id = aws_internet_gateway.igw.id
   }
   default_route_table_id = aws_vpc.vpc.default_route_table_id
 }

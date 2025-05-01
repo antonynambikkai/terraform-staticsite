@@ -7,5 +7,5 @@ output "public_subnets" {
 }
 
 output "route_table_ids" {
-  value = aws_route_table.public.id
+  value = aws_route_table.rtb.id
 }
