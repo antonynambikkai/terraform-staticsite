@@ -29,7 +29,7 @@ module "s3" {
  module "s3_vpc_endpoint" {
    source          = "./modules/s3_vpc_endpoint"
    vpc_id          = module.vpc.vpc_id
-   route_table_ids = module.vpc.aws_default_route_table.id
+   route_table_ids = tolist(module.vpc.aws_default_route_table.id)
    
     } 
 

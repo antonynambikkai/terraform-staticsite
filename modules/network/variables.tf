@@ -8,3 +8,9 @@ variable "region" {
   type    = string
   default = "us-east-2"
 }
+
+
+variable "public_subnet_cidrs" {
+type = list(string)
+}
+
