@@ -20,11 +20,11 @@ module "s3" {
   source = "./modules/s3"
 }
 
-# module "alb" {
-#   source  = "./modules/alb"
-#   vpc_id  = module.network.vpc_id
-#   subnets = module.network.public_subnets
-# }
+module "alb" {
+  source  = "./modules/alb"
+  vpc_id  = modules.network.vpc_id
+  subnets = modules.network.public_subnets
+}
 
 # module "s3_vpc_endpoint" {
 #   source          = "./modules/s3_vpc_endpoint"
